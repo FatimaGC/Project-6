@@ -2,10 +2,10 @@
     Build a a word guessing game where players will click letters from an onscreen keyboard to try to guess a random phrase.
     
     - Create an array of at least 5 phrases
-        set getRandomPhrasesArray to 'theearlybirdgetstheworm', 'actionsspeaklouderthanwords', 
-        'slowandsteadywinstherace', 'everycloudhasasilverlining', 'goodthingscometothosewhowait'
+        set getRandomPhrasesArray to 'The early bird gets the worm', 'Actions speak louder than words', 
+        'Slow and steady wins the race', 'Every cloud has a silver lining', 'Good things come to those who wait'
 
-    - Choose a random phrase from that array
+    - Choose a random phrase from that array 
     - Split the phrase into letters
     - Put those letters onto the game board
 
@@ -39,10 +39,10 @@ const qwerty = document.querySelector("#qwerty");
 const phrase = document.querySelector("#phrase");
 const btnReset = document.querySelector(".btn__reset");
 const getRandomPhrasesArray = [
-  "theearlybirdgetstheworm",
-  "actionsspeaklouderthanwords",
-  "slowandsteadywinstherace",
-  "everycloudhasasilverlining",
-  "goodthingscometothosewhowait",
+  "The early bird gets the worm",
+  "Actions speak louder than words",
+  "Slow and steady wins the race",
+  "Every cloud has a silver lining",
+  "Good things come to those who wait",
 ];
 let incorrectGuesses = 0;
