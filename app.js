@@ -37,7 +37,7 @@
 
 const qwerty = document.querySelector("#qwerty");
 const phrase = document.querySelector("#phrase");
-const btnReset = document.querySelector(".btn__reset");
+const startBtn = document.querySelector(".btn__reset");
 const getRandomPhrasesArray = [
   "The early bird gets the worm",
   "Actions speak louder than words",
@@ -46,3 +46,9 @@ const getRandomPhrasesArray = [
   "Good things come to those who wait",
 ];
 let incorrectGuesses = 0;
+
+//Hides overlay when start button is clicked
+startBtn.addEventListener("click", () => {
+  const overlay = document.querySelector("#overlay");
+  overlay.style.display = "none";
+});
