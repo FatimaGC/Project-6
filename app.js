@@ -5,9 +5,17 @@
         set getRandomphrases to 'The early bird gets the worm', 'Actions speak louder than words', 
         'Slow and steady wins the race', 'Every cloud has a silver lining', 'Good things come to those who wait'
 
-    - Choose a random phrase from that array 
-    - Split the phrase into letters
-    - Put those letters onto the game board
+    - Choose a random phrase from that array and split the phrase into letters
+        function getRandomPhraseAsArray
+            pass in array
+            set randomNumber to generate a random number based on the array's length
+            return phrase in array corresponding to randomNumber and use split method to split the string into an array of letters
+        end function 
+
+    - Display those letters on the game board
+        function addPhraseToDisplay
+        pass in array
+        end function
 
     - A player guesses a letter 
         get letter from user 
@@ -57,7 +65,25 @@ startBtn.addEventListener("click", () => {
 const getRandomPhraseAsArray = (array) => {
   const randomNumber = Math.floor(Math.random() * array.length);
   //   console.log(randomNumber);
-  return array[randomNumber];
+  const phraseletters = array[randomNumber].split("");
+
+  addPhraseToDisplay(phraseletters);
+};
+
+//adds the letters of a string to the display
+const addPhraseToDisplay = (phraseletters) => {
+  for (let i = 0; i < phraseletters.length; i++) {
+    const li = document.createElement("li");
+    li.textContent = phraseletters[i];
+    phrase.firstElementChild.appendChild(li);
+
+    if (li.textContent !== " ") {
+      li.className = "letter";
+    } else {
+      li.className = "space";
+    }
+    console.log(phraseletters[i]);
+  }
 };
 
 getRandomPhraseAsArray(phrases);
