@@ -45,6 +45,7 @@
 
 const qwerty = document.querySelector("#qwerty");
 const phrase = document.querySelector("#phrase");
+const phraseUL = phrase.firstElementChild;
 const startBtn = document.querySelector(".btn__reset");
 const phrases = [
   "The early bird gets the worm",
@@ -65,25 +66,42 @@ startBtn.addEventListener("click", () => {
 const getRandomPhraseAsArray = (array) => {
   const randomNumber = Math.floor(Math.random() * array.length);
   //   console.log(randomNumber);
-  const phraseletters = array[randomNumber].split("");
+  const phraseLetters = array[randomNumber].split("");
 
-  addPhraseToDisplay(phraseletters);
+  addPhraseToDisplay(phraseLetters);
 };
 
 //adds the letters of a string to the display
-const addPhraseToDisplay = (phraseletters) => {
-  for (let i = 0; i < phraseletters.length; i++) {
+const addPhraseToDisplay = (phraseLetters) => {
+  // for (let i = 0; i < phraseLetters.length; i++) {
+  //   const li = document.createElement("li");
+  //   li.textContent = phraseLetters[i];
+  //   phrase.firstElementChild.appendChild(li);
+
+  //   if (li.textContent !== " ") {
+  //     li.className = "letter";
+  //   } else {
+  //     li.className = "space";
+  //   }
+  //Refactoring using forEach loop
+  phraseLetters.forEach((phraseLetter) => {
     const li = document.createElement("li");
-    li.textContent = phraseletters[i];
-    phrase.firstElementChild.appendChild(li);
+    li.TextContent = phraseLetter;
+    phraseUL.appendChild(li);
 
     if (li.textContent !== " ") {
       li.className = "letter";
     } else {
       li.className = "space";
     }
-    console.log(phraseletters[i]);
-  }
+  });
+  // console.log(phraseLetters);
 };
 
 getRandomPhraseAsArray(phrases);
+
+//Check if a letter is in the phrase
+// const checkLetter = (button) => {
+//   // const lis = document.querySelectorAll(phrase.firstElementChild.childNodes)
+
+// }
