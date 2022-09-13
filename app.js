@@ -101,7 +101,15 @@ const addPhraseToDisplay = (phraseLetters) => {
 getRandomPhraseAsArray(phrases);
 
 //Check if a letter is in the phrase
-// const checkLetter = (button) => {
-//   // const lis = document.querySelectorAll(phrase.firstElementChild.childNodes)
+const checkLetter = (button) => {
+  const lis = document.querySelectorAll(".letter, .space");
 
-// }
+  lis.forEach((li) => {
+    let isMatch = "";
+    if (button.textContent === li.textContent) {
+      li.className = "show";
+      isMatch = button.textContent;
+      return isMatch;
+    }
+  });
+};
