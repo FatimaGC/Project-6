@@ -45,7 +45,6 @@
 
 const qwerty = document.querySelector("#qwerty");
 const phrase = document.querySelector("#phrase");
-// const phraseUL = phrase.firstElementChild;
 const startBtn = document.querySelector(".btn__reset");
 const phrases = [
   "The early bird gets the worm",
@@ -68,34 +67,12 @@ const getRandomPhraseAsArray = (array) => {
   //   console.log(randomNumber);
   const phraseLetters = array[randomNumber].split("");
 
-  addPhraseToDisplay(phrase, phraseLetters);
+  addPhraseToDisplay(phraseLetters);
 };
 
 //adds the letters of a string to the display
-const addPhraseToDisplay = (phrase, phraseLetters) => {
-  // for (let i = 0; i < phraseLetters.length; i++) {
-  //   const li = document.createElement("li");
-  //   li.textContent = phraseLetters[i];
-  //   phrase.firstElementChild.appendChild(li);
-
-  //   if (li.textContent !== " ") {
-  //     li.className = "letter";
-  //   } else {
-  //     li.className = "space";
-  //   }
-  //Refactoring using forEach loop
-  // phraseLetters.forEach((phraseLetter) => {
-  //   const li = document.createElement("li");
-  //   li.TextContent = phraseLetter;
-  //   phraseUL.appendChild(li);
-
-  //   if (li.textContent !== " ") {
-  //     li.className = "letter";
-  //   } else {
-  //     li.className = "space";
-  //   }
-  // });
-  const arrayOfHTMLElements = phraseLetters.map((phraseLetter) => {
+const addPhraseToDisplay = (phraseLetters) => {
+  phraseLetters.forEach((phraseLetter) => {
     const li = document.createElement("li");
     li.textContent = phraseLetter;
 
@@ -104,34 +81,29 @@ const addPhraseToDisplay = (phrase, phraseLetters) => {
     } else {
       li.className = "space";
     }
-    return li;
   });
-  console.log(arrayOfHTMLElements);
-  appendElementstoPhrase(phrase, arrayOfHTMLElements);
-};
-
-const appendElementstoPhrase = (phrase, arrayOfHTMLElements) => {
-  arrayOfHTMLElements.forEach((item) => {
-    phrase.firstElementChild.appendChild(item);
-  });
-
-  checkLetter(arrayOfHTMLElements);
-};
+}
+    
 
 getRandomPhraseAsArray(phrases);
 
 //Check if a letter is in the phrase
-const checkLetter = (arrayOfHTMLElements, button) => {
-  arrayOfHTMLElements.forEach((li) => {
+const checkLetter = (button) => {
+  .forEach((li) => {
     let isMatch = "";
     if (button.textContent === li.textContent) {
       li.className = "show";
       isMatch = button.textContent;
       return isMatch;
     }
-    console.log(isMatch);
   });
 };
 
 //listen for the onscreen keyboard to be clicked
-// qwerty.addEventListener("click");
+qwerty.addEventListener("click", (event) => {
+  const button = event.target;
+  if (button === "button") {
+    button.className = "chosen";
+    console.log("You clicked a button");
+  }
+});
