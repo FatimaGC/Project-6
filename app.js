@@ -66,7 +66,7 @@ const getRandomPhraseAsArray = (array) => {
   const randomNumber = Math.floor(Math.random() * array.length);
   //   console.log(randomNumber);
   const phraseLetters = array[randomNumber].split("");
-
+  // console.log(phraseLetters);
   addPhraseToDisplay(phraseLetters);
 };
 
@@ -75,6 +75,7 @@ const addPhraseToDisplay = (phraseLetters) => {
   phraseLetters.forEach((phraseLetter) => {
     const li = document.createElement("li");
     li.textContent = phraseLetter;
+    phrase.firstElementChild.appendChild(li);
 
     if (li.textContent !== " ") {
       li.className = "letter";
@@ -82,28 +83,29 @@ const addPhraseToDisplay = (phraseLetters) => {
       li.className = "space";
     }
   });
-}
-    
+};
 
 getRandomPhraseAsArray(phrases);
 
 //Check if a letter is in the phrase
 const checkLetter = (button) => {
-  .forEach((li) => {
-    let isMatch = "";
-    if (button.textContent === li.textContent) {
-      li.className = "show";
-      isMatch = button.textContent;
-      return isMatch;
+  const letterElements = document.querySelectorAll(".letter");
+  letterElements.forEach((letter) => {
+    if (letter.textContent === button.textContent {
+      letter.className = "show";
+      const matchingLetter = letter.textContent;
+      return matchingLetter;
+    } else {
+      return null;
     }
   });
 };
 
-//listen for the onscreen keyboard to be clicked
-qwerty.addEventListener("click", (event) => {
-  const button = event.target;
-  if (button === "button") {
-    button.className = "chosen";
-    console.log("You clicked a button");
-  }
-});
+// //listen for the onscreen keyboard to be clicked
+// qwerty.addEventListener("click", (event) => {
+//   const button = event.target;
+//   if (button === "button") {
+//     button.className = "chosen";
+//     console.log("You clicked a button");
+//   }
+// });
