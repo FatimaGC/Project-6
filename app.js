@@ -87,11 +87,24 @@ const addPhraseToDisplay = (phraseLetters) => {
 
 getRandomPhraseAsArray(phrases);
 
+//listen for the onscreen keyboard to be clicked
+qwerty.addEventListener("click", (event) => {
+  // const button = document.querySelector("button");
+  // button.forEach((button) => {
+  if (event.target.tagName === "BUTTON") {
+    event.target.className = "chosen";
+    event.target.disabled = true;
+    const button = event.target;
+    return button;
+    checkLetter(button);
+  }
+});
+
 //Check if a letter is in the phrase
 const checkLetter = (button) => {
   const letterElements = document.querySelectorAll(".letter");
   letterElements.forEach((letter) => {
-    if (letter.textContent === button.textContent {
+    if (letter.textContent === button.textContent) {
       letter.className = "show";
       const matchingLetter = letter.textContent;
       return matchingLetter;
@@ -100,12 +113,3 @@ const checkLetter = (button) => {
     }
   });
 };
-
-// //listen for the onscreen keyboard to be clicked
-// qwerty.addEventListener("click", (event) => {
-//   const button = event.target;
-//   if (button === "button") {
-//     button.className = "chosen";
-//     console.log("You clicked a button");
-//   }
-// });
