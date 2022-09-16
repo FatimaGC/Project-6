@@ -89,15 +89,14 @@ getRandomPhraseAsArray(phrases);
 
 //listen for the onscreen keyboard to be clicked
 qwerty.addEventListener("click", (event) => {
-  // const button = document.querySelector("button");
-  // button.forEach((button) => {
-  if (event.target.tagName === "BUTTON") {
-    event.target.className = "chosen";
-    event.target.disabled = true;
-    const button = event.target;
+  const button = event.target;
+  if (button.tagName === "BUTTON") {
+    button.className = "chosen";
+    button.disabled = true;
+
     return button;
-    checkLetter(button);
   }
+  checkLetter(button);
 });
 
 //Check if a letter is in the phrase
