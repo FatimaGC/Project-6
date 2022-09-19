@@ -94,7 +94,6 @@ qwerty.addEventListener("click", (event) => {
     event.target.className = "chosen";
     event.target.disabled = true;
     button = event.target.textContent;
-    // return button;
   }
   checkLetter(button);
 });
@@ -108,7 +107,8 @@ const checkLetter = (button) => {
     if (letterElements[i].textContent === button) {
       letterElements[i].classList.add("show");
       matchFound = button;
-      // return matchFound;
+    } else {
+      null;
     }
   }
 };
@@ -117,4 +117,17 @@ const checkLetter = (button) => {
 const checkWin = () => {
   const letterElements = document.querySelectorAll(".letter");
   const showElements = document.querySelectorAll(".show");
+  const overlay = document.querySelector("#overlay");
+
+  if (letterElements.length === showElements.length) {
+    overlay.classList.add("win");
+    overlay.innerHMTL = "<h2>You win!</h2>";
+    overlay.style.display = "flex";
+  } else {
+    if (incorrectGuesses > 4) {
+      overlay.classList.add("lose");
+      overlay.innerHMTL = "<h2>You lose :(</h2>";
+      overlay.style.display = "flex";
+    }
+  }
 };
