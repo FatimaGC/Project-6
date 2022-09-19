@@ -59,6 +59,7 @@ let incorrectGuesses = 0;
 startBtn.addEventListener("click", () => {
   const overlay = document.querySelector("#overlay");
   overlay.style.display = "none";
+  getRandomPhraseAsArray(phrases);
 });
 
 //return a random phrase from an array
@@ -74,27 +75,26 @@ const getRandomPhraseAsArray = (array) => {
 const addPhraseToDisplay = (phraseLetters) => {
   phraseLetters.forEach((phraseLetter) => {
     const li = document.createElement("li");
-    li.textContent = phraseLetter;
+    li.textContent = phraseLetter.toLowerCase();
     phrase.firstElementChild.appendChild(li);
 
     if (li.textContent !== " ") {
-      li.className = "letter";
+      li.classList = "letter";
     } else {
-      li.className = "space";
+      li.classList = "space";
     }
   });
 };
 
-getRandomPhraseAsArray(phrases);
-
 //listen for the onscreen keyboard to be clicked
 qwerty.addEventListener("click", (event) => {
-  const button = event.target;
-  if (button.tagName === "BUTTON") {
-    button.className = "chosen";
-    button.disabled = true;
+  let button = "";
 
-    return button;
+  if (event.target.tagName === "BUTTON") {
+    event.target.className = "chosen";
+    event.target.disabled = true;
+    button = event.target.textContent;
+    // return button;
   }
   checkLetter(button);
 });
@@ -102,13 +102,19 @@ qwerty.addEventListener("click", (event) => {
 //Check if a letter is in the phrase
 const checkLetter = (button) => {
   const letterElements = document.querySelectorAll(".letter");
-  letterElements.forEach((letter) => {
-    if (letter.textContent === button.textContent) {
-      letter.className = "show";
-      const matchingLetter = letter.textContent;
-      return matchingLetter;
-    } else {
-      return null;
+  let matchFound = "";
+
+  for (i = 0; i < letterElements.length; i++) {
+    if (letterElements[i].textContent === button) {
+      letterElements[i].classList.add("show");
+      matchFound = button;
+      // return matchFound;
     }
-  });
+  }
+};
+
+//check if the game has been won or lost
+const checkWin = () => {
+  const letterElements = document.querySelectorAll(".letter");
+  const showElements = document.querySelectorAll(".show");
 };
