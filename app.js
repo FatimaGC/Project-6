@@ -43,6 +43,7 @@
         
 */
 
+//Variables
 const qwerty = document.querySelector("#qwerty");
 const phrase = document.querySelector("#phrase");
 const startBtn = document.querySelector(".btn__reset");
@@ -95,7 +96,27 @@ qwerty.addEventListener("click", (event) => {
     event.target.disabled = true;
     button = event.target.textContent;
   }
-  checkLetter(button);
+
+  const checkLetterResult = checkLetter(button);
+
+  if (checkLetterResult === "") {
+    incorrectGuesses += 1;
+    const hearts = document.querySelectorAll(".tries img");
+    // console.log(hearts);
+    // console.log(hearts.length);
+    const remainingHearts = hearts.length - incorrectGuesses;
+
+    for (i = 0; i < hearts.length; i++) {
+      // console.log("Is this running?");
+      hearts[i].src = "images/lostHeart.png";
+    }
+
+    for (i = 0; i < remainingHearts; i++) {
+      // console.log("Is this running too?");
+      hearts[i].src = "images/liveHeart.png";
+    }
+    checkWin();
+  }
 });
 
 //Check if a letter is in the phrase
@@ -107,10 +128,9 @@ const checkLetter = (button) => {
     if (letterElements[i].textContent === button) {
       letterElements[i].classList.add("show");
       matchFound = button;
-    } else {
-      null;
     }
   }
+  return matchFound;
 };
 
 //check if the game has been won or lost
