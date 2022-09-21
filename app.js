@@ -115,8 +115,8 @@ qwerty.addEventListener("click", (event) => {
       // console.log("Is this running too?");
       hearts[i].src = "images/liveHeart.png";
     }
-    checkWin();
   }
+  checkWin();
 });
 
 //Check if a letter is in the phrase
@@ -141,12 +141,12 @@ const checkWin = () => {
 
   if (letterElements.length === showElements.length) {
     overlay.classList.add("win");
-    overlay.innerHMTL = "<h2>You win!</h2>";
+    overlay.innerHTML = "<h2>You win! :D </h2>";
     overlay.style.display = "flex";
   } else {
     if (incorrectGuesses > 4) {
       overlay.classList.add("lose");
-      overlay.innerHMTL = "<h2>You lose :(</h2>";
+      overlay.innerHTML = "<h2>You lose :( </h2>";
       overlay.style.display = "flex";
     }
   }
