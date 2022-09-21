@@ -53,6 +53,12 @@ const phrases = [
   "Slow and steady wins the race",
   "Every cloud has a silver lining",
   "Good things come to those who wait",
+  "A penny saved is a penny earned",
+  "No pain no gain",
+  "Time flies when you are having fun",
+  "An apple a day keeps the doctor away",
+  "An ounce of prevention is worth a pound of cure",
+  "Fortune favours the bold",
 ];
 let incorrectGuesses = 0;
 
