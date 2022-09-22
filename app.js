@@ -101,28 +101,28 @@ qwerty.addEventListener("click", (event) => {
     event.target.className = "chosen";
     event.target.disabled = true;
     button = event.target.textContent;
-  }
 
-  const checkLetterResult = checkLetter(button);
+    const checkLetterResult = checkLetter(button);
 
-  if (checkLetterResult === "") {
-    incorrectGuesses += 1;
-    const hearts = document.querySelectorAll(".tries img");
-    // console.log(hearts);
-    // console.log(hearts.length);
-    const remainingHearts = hearts.length - incorrectGuesses;
+    if (checkLetterResult === "") {
+      incorrectGuesses += 1;
+      const hearts = document.querySelectorAll(".tries img");
+      // console.log(hearts);
+      // console.log(hearts.length);
+      const remainingHearts = hearts.length - incorrectGuesses;
 
-    for (i = 0; i < hearts.length; i++) {
-      // console.log("Is this running?");
-      hearts[i].src = "images/lostHeart.png";
+      for (i = 0; i < hearts.length; i++) {
+        // console.log("Is this running?");
+        hearts[i].src = "images/lostHeart.png";
+      }
+
+      for (i = 0; i < remainingHearts; i++) {
+        // console.log("Is this running too?");
+        hearts[i].src = "images/liveHeart.png";
+      }
     }
-
-    for (i = 0; i < remainingHearts; i++) {
-      // console.log("Is this running too?");
-      hearts[i].src = "images/liveHeart.png";
-    }
+    checkWin();
   }
-  checkWin();
 });
 
 //Check if a letter is in the phrase
