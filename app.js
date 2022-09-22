@@ -58,7 +58,7 @@ const phrases = [
   "Time flies when you are having fun",
   "An apple a day keeps the doctor away",
   "An ounce of prevention is worth a pound of cure",
-  "Fortune favours the bold",
+  "Fortune favors the bold",
 ];
 let incorrectGuesses = 0;
 
